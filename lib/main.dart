@@ -15,8 +15,8 @@ class Modelo extends StatefulWidget {
 }
 
 class _modeloState extends State<Modelo> {
-  double valor1 = 0;
-  double valor2 = 0;
+  double valor_1 = 0;
+  double valor_2 = 0;
   double sliderFirstValue = 0;
   double sliderSecondValue = 0;
   double resultado = 0;
@@ -29,14 +29,14 @@ class _modeloState extends State<Modelo> {
     "sobrepeso",
     "obesidad",
   ];
-  double solucion() {
-    double alturaM = valor1 / 100;
-    resultado = valor2 / (alturaM * alturaM);
+  double calculo() {
+    double alturaM = valor_1 / 100;
+    resultado = valor_2 / (alturaM * alturaM);
     resultado = double.parse(resultado.toStringAsFixed(2));
     return resultado;
   }
 
-  String rcondicion() {
+  String estado_fisico() {
     if (resultado < 18.5) {
       imc = "bajo peso";
     } else if (resultado >= 18.5 && resultado < 24.9) {
@@ -49,15 +49,15 @@ class _modeloState extends State<Modelo> {
     return imc;
   }
 
-  String rImage() {
+  String aspecto() {
     if (resultado < 18.5) {
-      imagen = "./assets/bajo_peso.jpg";
+      imagen = "/assets/bajo_peso.jpg";
     } else if (resultado >= 18.5 && resultado < 24.9) {
-      imagen = "../assets/peso_normal.jpg";
+      imagen = "assets/peso_normal.jpg";
     } else if (resultado >= 25 && resultado < 29.9) {
       imagen = "assets/sobrepeso.jpg";
     } else {
-      imagen = "assets/obesidad.jpg";
+      imagen = 'assets/obesidad.png';
     }
     return imagen;
   }
@@ -68,7 +68,7 @@ class _modeloState extends State<Modelo> {
       child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.blueAccent,
-            title: Text("IMC calculator"),
+            title: const Text("IMC calculator"),
             centerTitle: true,
           ),
           backgroundColor: Colors.white,
@@ -86,9 +86,9 @@ class _modeloState extends State<Modelo> {
                   ),
                 ),
                 Text(
-                  valor1.toString() + " cm",
+                  valor_1.toString() + " cm",
                   style: const TextStyle(
-                    fontSize: 40,
+                    fontSize: 30,
                     color: Colors.black,
                   ),
                 ),
@@ -101,7 +101,7 @@ class _modeloState extends State<Modelo> {
                     onChanged: (uno) {
                       sliderFirstValue = uno;
                       setState(() {
-                        valor1 = double.parse(uno.toStringAsFixed(2));
+                        valor_1 = double.parse(uno.toStringAsFixed(2));
                       });
                     }),
                 const Divider(
@@ -115,9 +115,9 @@ class _modeloState extends State<Modelo> {
                   ),
                 ),
                 Text(
-                  valor2.toString() + " Kg",
+                  valor_2.toString() + " Kg",
                   style: const TextStyle(
-                    fontSize: 40,
+                    fontSize: 30,
                     color: Colors.black,
                   ),
                 ),
@@ -130,7 +130,7 @@ class _modeloState extends State<Modelo> {
                     onChanged: (dos) {
                       sliderSecondValue = dos;
                       setState(() {
-                        valor2 = double.parse(dos.toStringAsFixed(2));
+                        valor_2 = double.parse(dos.toStringAsFixed(2));
                       });
                     }),
                 const Divider(
@@ -141,9 +141,9 @@ class _modeloState extends State<Modelo> {
                   height: 50,
                   child: ElevatedButton(
                       onPressed: () {
-                        solucion();
-                        rcondicion();
-                        rImage();
+                        calculo();
+                        estado_fisico();
+                        aspecto();
                         setState(() {});
                       },
                       style: ButtonStyle(
@@ -161,7 +161,7 @@ class _modeloState extends State<Modelo> {
                   resultado.toString(),
                   style: const TextStyle(
                     fontSize: 35,
-                    color: Colors.white,
+                    color: Colors.blueAccent,
                   ),
                 ),
                 Text(
@@ -172,7 +172,7 @@ class _modeloState extends State<Modelo> {
                   ),
                 ),
                 const Text(
-                  "Debes de comer mas saludable y menter una dieta sana y balanceada",
+                  "Debes hacer ejercicio y una dieta balanceada",
                   style: TextStyle(
                     color: Colors.white60,
                     fontSize: 15,
