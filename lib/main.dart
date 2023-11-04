@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(const MaterialApp(
     home: Modelo(),
-    //debugShowCheckedModeBanner: false,
   ));
 }
 
@@ -51,7 +50,7 @@ class _modeloState extends State<Modelo> {
 
   String aspecto() {
     if (resultado < 18.5) {
-      imagen = "/assets/bajo_peso.jpg";
+      imagen = "assets/bajo_peso.jpg";
     } else if (resultado >= 18.5 && resultado < 24.9) {
       imagen = "assets/peso_normal.jpg";
     } else if (resultado >= 25 && resultado < 29.9) {
