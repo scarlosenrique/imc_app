@@ -22,12 +22,6 @@ class _modeloState extends State<Modelo> {
   String imc = "";
   String imagen = "";
 
-  List<String> condicion = [
-    "bajo peso",
-    "peso normal",
-    "sobrepeso",
-    "obesidad",
-  ];
   double calculo() {
     double alturaM = valor_1 / 100;
     resultado = valor_2 / (alturaM * alturaM);
@@ -37,13 +31,13 @@ class _modeloState extends State<Modelo> {
 
   String estado_fisico() {
     if (resultado < 18.5) {
-      imc = "bajo peso";
+      imc = "Bajo peso";
     } else if (resultado >= 18.5 && resultado < 24.9) {
-      imc = "peso saludable";
+      imc = "Peso saludable";
     } else if (resultado >= 25 && resultado < 29.9) {
-      imc = "sobrepeso";
+      imc = "Sobrepeso";
     } else {
-      imc = "obesidad";
+      imc = "Obesidad";
     }
     return imc;
   }
@@ -172,7 +166,7 @@ class _modeloState extends State<Modelo> {
                 ),
                 const SizedBox(height: 30),
                 const Text(
-                  "Has ejercicio y sigue una dieta balanceada",
+                  "Ejercitate y sigue una dieta balanceada",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
