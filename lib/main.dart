@@ -16,8 +16,8 @@ class Modelo extends StatefulWidget {
 class _modeloState extends State<Modelo> {
   double valor_1 = 0;
   double valor_2 = 0;
-  double sliderFirstValue = 0;
-  double sliderSecondValue = 0;
+  double slider1 = 0;
+  double slider2 = 0;
   double resultado = 0;
   String imc = "";
   String imagen = "";
@@ -92,13 +92,13 @@ class _modeloState extends State<Modelo> {
                   ),
                 ),
                 Slider(
-                    value: sliderFirstValue,
+                    value: slider1,
                     min: 0,
                     max: 220,
                     activeColor: Colors.red,
                     inactiveColor: Colors.grey,
                     onChanged: (uno) {
-                      sliderFirstValue = uno;
+                      slider1 = uno;
                       setState(() {
                         valor_1 = double.parse(uno.toStringAsFixed(2));
                       });
@@ -121,13 +121,13 @@ class _modeloState extends State<Modelo> {
                   ),
                 ),
                 Slider(
-                    value: sliderSecondValue,
+                    value: slider2,
                     min: 0,
                     max: 140,
                     activeColor: Colors.red,
                     inactiveColor: Colors.grey,
                     onChanged: (dos) {
-                      sliderSecondValue = dos;
+                      slider2 = dos;
                       setState(() {
                         valor_2 = double.parse(dos.toStringAsFixed(2));
                       });
@@ -166,17 +166,19 @@ class _modeloState extends State<Modelo> {
                 Text(
                   imc,
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: Colors.green,
                     fontSize: 25,
                   ),
                 ),
+                const SizedBox(height: 30),
                 const Text(
-                  "Debes hacer ejercicio y una dieta balanceada",
+                  "Has ejercicio y sigue una dieta balanceada",
                   style: TextStyle(
-                    color: Colors.white60,
-                    fontSize: 15,
+                    color: Colors.black,
+                    fontSize: 18,
                   ),
                 ),
+                const SizedBox(height: 30),
                 ClipOval(
                   child: Container(
                     width: 150,
